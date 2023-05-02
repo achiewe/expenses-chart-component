@@ -1,19 +1,21 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Header from "./components/Header";
+import Balance from "./components/Balance";
 
 function App(): JSX.Element {
   return (
-    <Main>
-      <Header />
-    </Main>
+    <StyledMain>
+      <Balance />
+    </StyledMain>
   );
 }
 
-const Main = styled.main`
+const StyledMain = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
   justify-content: center;
   align-items: center;
   background-color: #f8e9dd;

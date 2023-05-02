@@ -2,7 +2,7 @@ import { useState } from "react";
 import LogoSvg from "../photoes/logo.svg";
 import styled from "styled-components";
 
-const Header = (): JSX.Element => {
+const Balance = (): JSX.Element => {
   return (
     <HeaderDiv>
       <h1>
@@ -41,4 +41,4 @@ const HeaderDiv = styled.header`
     }
   }
 `;
-export default Header;
+export default Balance;
