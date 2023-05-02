@@ -1,8 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Header from "./components/Header";
 
 function App(): JSX.Element {
-  return <Main> </Main>;
+  return (
+    <Main>
+      <Header />
+    </Main>
+  );
 }
 
 const Main = styled.main`
@@ -12,5 +17,6 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   background-color: #f8e9dd;
+  padding: 0 16px;
 `;
 export default App;
