@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Balance from "./components/Balance";
+import Statistic from "./components/Statistic";
 
 function App(): JSX.Element {
   return (
     <StyledMain>
       <Balance />
+      <Statistic />
     </StyledMain>
   );
 }
