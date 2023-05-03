@@ -26,6 +26,7 @@ const HeaderDiv = styled.header`
 
   @media (min-width: 1024px) {
     padding: 27px 39px 25px 32px;
+    border-radius: 20px;
   }
 
   h1 {
