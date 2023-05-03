@@ -25,6 +25,10 @@ const HeaderDiv = styled.header`
   background-color: #ec755d;
   border-radius: 10px;
 
+  @media (min-width: 1024px) {
+    padding: 27px 39px 25px 32px;
+  }
+
   h1 {
     font-size: 15px;
     font-weight: 400;
@@ -32,12 +36,22 @@ const HeaderDiv = styled.header`
     letter-spacing: 0px;
     text-align: left;
     color: #ffffff;
+
+    @media (min-width: 1024px) {
+      font-size: 18px;
+      line-height: 23.44px;
+    }
     span {
       font-size: 24px;
       font-weight: 700;
       line-height: 31px;
       letter-spacing: 0px;
       text-align: left;
+
+      @media (min-width: 1024px) {
+        font-size: 32px;
+        line-height: 41.66px;
+      }
     }
   }
 `;
