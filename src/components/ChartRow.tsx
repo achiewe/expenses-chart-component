@@ -5,6 +5,7 @@ interface Props {
   statisticInfo: Info[];
   i: number;
   MaxQuantity: Number;
+  place: {};
 }
 
 const ChartRow = ({ statisticInfo, i, MaxQuantity }: Props): JSX.Element => {

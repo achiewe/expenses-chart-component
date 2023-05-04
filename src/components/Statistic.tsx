@@ -26,6 +26,7 @@ const Statistic = ({ statisticInfo, setStatisticInfo }: Props): JSX.Element => {
 
   const MaxQuantity = Math.max(...AmountArray);
   console.log(MaxQuantity);
+
   return (
     <MainDiv>
       <div className="graphical-div">
@@ -37,6 +38,7 @@ const Statistic = ({ statisticInfo, setStatisticInfo }: Props): JSX.Element => {
               i={i}
               key={i}
               MaxQuantity={MaxQuantity}
+              place={place}
             />
           ))}
         </div>
