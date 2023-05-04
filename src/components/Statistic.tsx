@@ -1,53 +1,44 @@
 import styled from "styled-components";
+import { Info } from "./Types";
+import { useEffect } from "react";
+import axios from "axios";
+import ChartRow from "./ChartRow";
 
-const Statistic = (): JSX.Element => {
+interface Props {
+  statisticInfo: Info[];
+  setStatisticInfo(statisticInfo: Info[]): void;
+}
+
+const Statistic = ({ statisticInfo, setStatisticInfo }: Props): JSX.Element => {
+  useEffect(() => {
+    const requestData = async () => {
+      const response = await axios.get("/data.json");
+      const data = response.data;
+      setStatisticInfo(data);
+      console.log(statisticInfo);
+    };
+    requestData();
+  }, []);
+
+  const AmountArray = statisticInfo.map((item: { amount: string }) =>
+    Number(item.amount)
+  );
+
+  const MaxQuantity = Math.max(...AmountArray);
+  console.log(MaxQuantity);
   return (
     <MainDiv>
       <div className="graphical-div">
         <h1>Spending - Last 7 days</h1>
         <div className="graphical-representation">
-          <div className="month-statistic">
-            <div className="div mon">
-              <div className="red">$17.45 </div>
-            </div>
-            <h4>mon </h4>
-          </div>
-          <div className="month-statistic">
-            <div className="div tue">
-              <div className="red">$34.91 </div>
-            </div>
-            <h4>tue </h4>
-          </div>
-          <div className="month-statistic">
-            <div className="div wed">
-              <div className="red">$52.36 </div>
-            </div>
-            <h4>wed </h4>
-          </div>
-          <div className="month-statistic">
-            <div className="div thu">
-              <div className="red">$31.07 </div>
-            </div>
-            <h4>thu </h4>
-          </div>
-          <div className="month-statistic">
-            <div className="div fri">
-              <div className="red">$23.39 </div>
-            </div>
-            <h4>fri </h4>
-          </div>
-          <div className="month-statistic">
-            <div className="div sat">
-              <div className="red">$43.28 </div>
-            </div>
-            <h4>sat </h4>
-          </div>
-          <div className="month-statistic">
-            <div className="div sun">
-              <div className="red">$25.48 </div>
-            </div>
-            <h4>sun </h4>
-          </div>
+          {statisticInfo.map((place, i) => (
+            <ChartRow
+              statisticInfo={statisticInfo}
+              i={i}
+              key={i}
+              MaxQuantity={MaxQuantity}
+            />
+          ))}
         </div>
       </div>
       <hr />
@@ -112,96 +103,6 @@ const MainDiv = styled.main`
       width: 100%;
       @media (min-width: 1024px) {
         gap: 17.91px;
-      }
-
-      .month-statistic {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 11px;
-        width: 100%;
-        @media (min-width: 1024px) {
-          gap: 8px;
-        }
-
-        .div {
-          background-color: #ec755d;
-          position: relative;
-          border-radius: 3px;
-          width: 100%;
-          max-width: 33px;
-          :hover {
-            background-color: #ff9b86;
-          }
-          :hover .red {
-            display: flex;
-          }
-          cursor: pointer;
-          @media (min-width: 1024px) {
-            max-width: 50.36px;
-          }
-        }
-
-        .red {
-          position: absolute;
-          top: -50px;
-          left: -13px;
-          right: 0;
-          display: none;
-          justify-content: center;
-          align-items: center;
-          background-color: #382314;
-          width: 75px;
-          border-radius: 5px;
-          height: 40px;
-          font-size: 18px;
-          font-weight: 700;
-          line-height: 23px;
-          color: #fffbf6;
-          letter-spacing: 0px;
-          text-align: center;
-        }
-
-        .mon {
-          height: 50px;
-        }
-        .tue {
-          height: 100px;
-        }
-
-        .wed {
-          background-color: #76b5bc;
-          height: 150px;
-          :hover {
-            background-color: #b4e0e5;
-          }
-        }
-
-        .thu {
-          height: 89px;
-        }
-        .fri {
-          height: 67px;
-        }
-        .sat {
-          height: 124px;
-        }
-        .sun {
-          height: 73px;
-        }
-
-        h4 {
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 16px;
-          letter-spacing: 0px;
-          text-align: center;
-          color: #92857a;
-          @media (min-width: 1024px) {
-            font-size: 15px;
-            line-height: 19.53px;
-          }
-        }
       }
     }
   }

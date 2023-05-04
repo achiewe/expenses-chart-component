@@ -2,13 +2,19 @@ import styled from "styled-components";
 import Balance from "./components/Balance";
 import Statistic from "./components/Statistic";
 import GlobalStyles from "./GlobalStyles";
+import { useState } from "react";
+import { Info } from "./components/Types";
 
 function App(): JSX.Element {
+  const [statisticInfo, setStatisticInfo] = useState<Info[]>([]);
   return (
     <StyledMain>
       <GlobalStyles />
       <Balance />
-      <Statistic />
+      <Statistic
+        statisticInfo={statisticInfo}
+        setStatisticInfo={setStatisticInfo}
+      />
     </StyledMain>
   );
 }
@@ -25,6 +31,7 @@ const StyledMain = styled.div`
   padding: 0 16px;
   @media (min-width: 1024px) {
     padding: 0;
+    gap: 24px;
   }
 `;
 export default App;
